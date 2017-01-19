@@ -1,0 +1,8 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+div {
+  position: absolute;
+  margin: 10px;
+  background: red; }
