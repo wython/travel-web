@@ -1,4 +1,7 @@
 var webpack = require('webpack');
+var config = require('./gulp/config');
+
+var publicPath = config.debug?'./src/js/lazys/':'./dist/js/lazys/';
 
 module.exports = {
     watch: true,    //监听变化自动编译
@@ -6,7 +9,9 @@ module.exports = {
         'index': './src/js/index.js'
     },
     output: {
-        filename: '[name].min.js'
+        filename: '[name].min.js',
+        publicPath: publicPath,
+        chunkFilename:'[name].min.js'
     },
     module: {
         loaders: [
