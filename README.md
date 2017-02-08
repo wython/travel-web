@@ -1,5 +1,6 @@
 # travel-web
-毕业设计，旅游旅游网站，基于gulp-webpack,react,react-router,redux
+毕业设计的前台页面，项目做了前后端分离，需要后台提供json数据
+,旅游旅游网站，基于gulp-webpack,react,react-router,redux
 
 ## 启动
 需要先node

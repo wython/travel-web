@@ -7,7 +7,7 @@ if(config.debug){
 
     });
 }else {
-    gulp.task('default',function () {
+    gulp.task('default',['js','scss','css'],function () {
         gulp.src( 'src/css/**/*.min.css' )
             .pipe( cleanCSS() )
             .pipe( gulp.dest('dist/src/css') );

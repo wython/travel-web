@@ -1,0 +1,8 @@
+.header{
+    height: 80px;
+    background: rgba(255, 255, 255, .96);
+}
+.header-content{
+    width: 1180px;
+    margin: auto;
+}
