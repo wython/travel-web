@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class Tips extends React.Component {
+class Tips extends React.Component {
     render() {
         return (
             <div>
@@ -9,3 +9,5 @@ export default class Tips extends React.Component {
         )
     }
 }
+
+module.exports = Tips;

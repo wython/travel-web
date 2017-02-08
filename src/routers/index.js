@@ -1,20 +1,14 @@
 import App from '../js/container/App'
-import Tips from '../js/component/tips'
-import Asks from '../js/component/asks'
 import Index from '../js/component/index'
+import Asks from './routes/asks'
+import Tips from './routes/tips'
 
 export default {
     path:'/',
     component: App,
     indexRoute:{component:Index},
     childRoutes:[
-        {
-            path:'tips',
-            component:Tips
-        },
-        {
-            path:'asks',
-            component:Asks
-        }
+        Asks,
+        Tips
     ]
 }

@@ -1,9 +1,10 @@
 import React from 'react'
-
-export default class Asks extends React.Component {
+class Asks extends React.Component {
     render() {
         return (
             <div>asks</div>
         )
     }
 }
+
+module.exports = Asks;
