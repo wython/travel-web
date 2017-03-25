@@ -16,7 +16,7 @@ module.exports = function (debug) {
             vendor: ['react', 'react-dom', 'react-router', 'redux', 'react-redux']
         },
         output: {
-            path: __dirname + '/server/public',
+            path: __dirname + '/server/public ',
             filename: filename,
             publicPath: publicPath,
             chunkFilename: lazyChunkFilename
@@ -49,7 +49,7 @@ module.exports = function (debug) {
                 "node_modules"
             ],
             extensions: ['.js', '.vue', '.css'],
-            alias: {
+            alias: { 
                 components: path.join(__dirname, 'frond-end/src/components/'),
                 layouts: path.join(__dirname, 'frond-end/src/layouts/'),
                 assets: path.join(__dirname, 'frond-end/src/assets/'),
