@@ -12,6 +12,15 @@
 
 > npm run dev
 
+前端构建:
+> gulp build
+
+或者
+
+> npm run build
+
+
+
 后端启动:
 
 > node server.js
@@ -19,4 +28,4 @@
 ## 项目细节
 后端使用工作时搭建的node服务器,基于koa内核,采用koa-router
 做路由转发,sequlize做orm。简单封装model。有很大的修改空间.
-[详情点击]()
+[详情点击](https://github.com/turingWu/travel-web/blob/master/docs/server.md)

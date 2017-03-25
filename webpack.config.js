@@ -16,7 +16,7 @@ module.exports = function (debug) {
             vendor: ['react', 'react-dom', 'react-router', 'redux', 'react-redux']
         },
         output: {
-            path: __dirname + '/dist',
+            path: __dirname + '/server/public',
             filename: filename,
             publicPath: publicPath,
             chunkFilename: lazyChunkFilename
