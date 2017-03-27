@@ -45,15 +45,15 @@ module.exports = function (debug) {
         },
         resolve: {
             modules: [
-                path.join(__dirname, "src"),
+                path.join(__dirname, "frond-end", "src"),
                 "node_modules"
             ],
-            extensions: ['.js', '.vue', '.css'],
-            alias: { 
-                components: path.join(__dirname, 'frond-end/src/components/'),
-                layouts: path.join(__dirname, 'frond-end/src/layouts/'),
-                assets: path.join(__dirname, 'frond-end/src/assets/'),
-                pages: path.join(__dirname, 'frond-end/src/pages/'),
+            extensions: ['.js', '.css'],
+            alias: {
+                components: path.join(__dirname, '/frond-end/src/js/components'),
+                layouts: path.join(__dirname, '/frond-end/src/js/layouts'),
+                assets: path.join(__dirname, '/frond-end/src/js/assets'),
+                pages: path.join(__dirname, '/frond-end/src/js/pages')
             }
         },
         plugins: [
@@ -97,5 +97,7 @@ module.exports = function (debug) {
             })
         )
     }
+    console.log(__dirname);
+    console.log(config.resolve.alias);
     return config
 };

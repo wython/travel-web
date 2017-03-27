@@ -1,5 +1,29 @@
 .header{
     width: 100%;
     padding: 0 48px;
-    background: #f5edf4;
+    height: 80px;
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
+}
+
+#logo{
+    height: 80px;
+    line-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    float: left;
+}
+
+#logo img {
+    width: 30px;
+    height: 49px;
+    margin-right: 16px;
+}
+
+#logo span{
+    font-size: 20px;
+    letter-spacing: 2px;
 }
