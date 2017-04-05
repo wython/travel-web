@@ -97,7 +97,5 @@ module.exports = function (debug) {
             })
         )
     }
-    console.log(__dirname);
-    console.log(config.resolve.alias);
     return config
 };

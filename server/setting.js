@@ -9,17 +9,25 @@
  *
  */
 const path = require('path');
+const token = require('./middlewares/token');
 
 module.exports = {
+    keys : ['i m gaga'],
     database: {
-        name: 'soul',
+        name: 'travel',
         username: 'root',
         password: 'root'
     },
     controllerConfig: {
         routers: path.join(__dirname, 'routers', 'index.js')
     },
-    PORT: 3001,
+    PORT: 3002,
     BASE_DIR: __dirname,
-    MODEL_DIR: '/models'
+    MODEL_DIR: '/models',
+    addMiddleBeforeRouter () {
+        return [token.before];
+    },
+    addMiddleAfterRouter () {
+        return [token.after];
+    }
 };

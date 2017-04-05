@@ -360,7 +360,6 @@ Router.prototype.routes = Router.prototype.middleware = function () {
 
 Router.prototype.allowedMethods = function (options) {
     options = options || {};
-    console.log(this);
     var implemented = this.methods;
     return function allowedMethods(ctx, next) {
         return next().then(function() {

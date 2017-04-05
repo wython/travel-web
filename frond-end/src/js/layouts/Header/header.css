@@ -27,3 +27,41 @@
     font-size: 20px;
     letter-spacing: 2px;
 }
+.home-menu li{
+    height: 80px;
+    line-height: 80px;
+    font-size: 20px;
+}
+
+.user-status-wrapper{
+    height: 80px;
+    display: flex;
+    align-items: center;
+
+}
+.search-wrapper{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.line-wrapper{
+    width: 100%;
+    border-left:1px solid #cccccc;
+    padding-left:20px;
+}
+.unlogin-wrapper{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.unlogin-wrapper span{
+    font-size: 20px;
+}
+.unlogin-wrapper .login-span{
+    margin-right: 20px;
+}
+.login-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

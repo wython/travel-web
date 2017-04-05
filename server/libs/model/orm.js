@@ -25,6 +25,9 @@ module.exports = {
         this._models = null;
         return this;
     },
+    getSequelize () {
+        return this._orm;
+    },
     getModels () {
         if (!this._models) {
             try {
@@ -36,6 +39,15 @@ module.exports = {
         }
         return this._models;
     },
+
+    defineWithReferences (arrays) {
+        if(!Array.isArray(arrays)) throw new TypeError("Models lists must be a array!");
+        const models = requireDir(this._context.modelDir);
+        for (let key in arrays) {
+            this._orm.define(arrays[key], models[arrays[key]])
+        }
+    },
+
     defineModel () {
         const models = requireDir(this._context.modelDir);
         this._models = {};
