@@ -11,11 +11,18 @@ const getHomePage = (location, cb) => {
     })
 };
 
+const getTipsPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/TipsPage'))
+    })
+};
+
 const Routers = () => {
     return (
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute getComponent={getHomePage}/>
+                <IndexRoute getComponents={getHomePage}/>
+                <Route path="tips" getComponents={getTipsPage}/>
             </Route>
         </Router>
     )

@@ -25,6 +25,16 @@ class App {
         //init the data
         this.settings = settings;
         this.app = new Koa();
+        this.app.keys = settings.keys || []; //secret keys for cookie
+    }
+
+    addMiddlewares(middleArr) {
+        if(!Array.isArray(middleArr)) {
+            throw TypeError('Middleware in settings is not type Array!');
+        }
+        for (let index in middleArr) {
+            this.app.use(middleArr[index](this.app));
+        }
     }
 
     /**
@@ -33,8 +43,14 @@ class App {
      * @returns {Object}
      */
     start() {
+        let getMiddleFun  = this.settings.addMiddleBeforeRouter;
+        getMiddleFun && this.addMiddlewares(getMiddleFun());
+
         this.app.use(this.router.routes());
         this.app.use(this.router.allowedMethods());
+
+        getMiddleFun = this.settings.addMiddleAfterRouter;
+        getMiddleFun && this.addMiddlewares(getMiddleFun());
         this.app.listen(this.settings.PORT || 3000);
         console.log('Start server at port :' + this.settings.PORT || 3000);
         return this;
@@ -69,6 +85,10 @@ AppManager.prototype = {
 };
 AppManager.prototype.init.prototype = AppManager.prototype; //保证能够不用new调用
 
-appManager = AppManager();
+
+let appManager = AppManager();
+async function a() {
+    
+}
 
 module.exports = appManager.getApp();

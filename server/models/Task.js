@@ -4,5 +4,20 @@
 const Sequelize = require('sequelize');
 
 module.exports = {
-    name: Sequelize.STRING
+    username: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+        references: {
+            model: 'Users',
+            key: 'username'
+        }
+    },
+    title: {
+        type: Sequelize.STRING(255),
+        allowNull: false
+    },
+    content: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
 };
