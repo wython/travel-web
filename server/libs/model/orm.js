@@ -52,7 +52,7 @@ module.exports = {
         const models = requireDir(this._context.modelDir);
         this._models = {};
         for (let key in models) {
-            this._models[key] = this._orm.define(key, models[key]);
+            this._models[key] = this._orm.define(key, models[key], { engine: 'MYISAM' });
         }
     }
 };

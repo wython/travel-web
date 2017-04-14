@@ -4,17 +4,21 @@
 import React from 'react'
 import {Form, Input ,Button, Icon, Checkbox} from 'antd'
 import './login.css'
+import fetch from 'utils/fetcher'
+
 
 const FormItem = Form.Item;
 class LoginForm extends React.Component{
     constructor(props) {
         super(props);
     }
-    handleSubmit(value) {
+    handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                fetch.post('/api/login', { data: values }).then(function (result) {
+                    console.log(result);
+                })
             }
         });
     }

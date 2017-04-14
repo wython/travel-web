@@ -27,6 +27,13 @@ class App {
         this.app = new Koa();
         this.app.keys = settings.keys || []; //secret keys for cookie
     }
+    setOrmMiddlewares () {
+        let models = this.orm.getModels();
+        this.app.use(async function (ctx, next) {
+            ctx.models = models;
+            await next();
+        })
+    }
 
     addMiddlewares(middleArr) {
         if(!Array.isArray(middleArr)) {
@@ -43,6 +50,7 @@ class App {
      * @returns {Object}
      */
     start() {
+        this.setOrmMiddlewares();
         let getMiddleFun  = this.settings.addMiddleBeforeRouter;
         getMiddleFun && this.addMiddlewares(getMiddleFun());
 
@@ -87,8 +95,5 @@ AppManager.prototype.init.prototype = AppManager.prototype; //保证能够不用
 
 
 let appManager = AppManager();
-async function a() {
-    
-}
 
 module.exports = appManager.getApp();

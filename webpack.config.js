@@ -53,7 +53,8 @@ module.exports = function (debug) {
                 components: path.join(__dirname, '/frond-end/src/js/components'),
                 layouts: path.join(__dirname, '/frond-end/src/js/layouts'),
                 assets: path.join(__dirname, '/frond-end/src/js/assets'),
-                pages: path.join(__dirname, '/frond-end/src/js/pages')
+                pages: path.join(__dirname, '/frond-end/src/js/pages'),
+                utils: path.join(__dirname, '/frond-end/utils')
             }
         },
         plugins: [

@@ -4,6 +4,7 @@
 
 const gulp = require('gulp');
 const webpackDevServer = require('webpack-dev-server');
+const proxy = require('http-proxy-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('../../webpack.config')(true);
 
@@ -24,7 +25,8 @@ gulp.task('dev', function () {
     let serverConfig = {
         contentBase: 'dist',
         stats: devStats,
-        hot: true
+        hot: true,
+        proxy: { "/api": "http://localhost:3002" }
     };
     new webpackDevServer(webpack(webpackConfig), serverConfig).listen(9999, 'localhost' ,function (error) {
         console.log('Open the browser in http://localhost:9999 to see the page');

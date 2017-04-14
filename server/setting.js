@@ -10,6 +10,7 @@
  */
 const path = require('path');
 const token = require('./middlewares/token');
+const body = require('./middlewares/koa-body');
 
 module.exports = {
     keys : ['i m gaga'],
@@ -25,7 +26,7 @@ module.exports = {
     BASE_DIR: __dirname,
     MODEL_DIR: '/models',
     addMiddleBeforeRouter () {
-        return [token.before];
+        return [token.before, body];
     },
     addMiddleAfterRouter () {
         return [token.after];

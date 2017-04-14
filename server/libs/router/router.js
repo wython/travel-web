@@ -313,7 +313,6 @@ Router.prototype.routes = Router.prototype.middleware = function () {
         } else {
             ctx.matched = matched.path;
         }
-
         if (!matched.route) return next();
 
         var mostSpecificPath = matched.pathAndMethod[matched.pathAndMethod.length - 1].path;
@@ -327,7 +326,6 @@ Router.prototype.routes = Router.prototype.middleware = function () {
             });
             return memo.concat(layer.stack);
         }, []);
-
         return compose(layerChain)(ctx, next);
     };
 

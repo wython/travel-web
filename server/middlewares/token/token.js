@@ -5,7 +5,7 @@
 const jwt = require('jsonwebtoken');
 
 const sKeys = 'soul-keys-123';
-const tokenCode = {
+export const tokenCode = {
     TOKEN_SUCCESS: {
         code: '000000',
         msg: 'token检查成功'
@@ -51,7 +51,6 @@ const Token = {
             ctx.tokenCode = tokenCode.TOKEN_NOT_FIND;
         } else {
             let result = await verifyToken(token);
-            console.log(result);
             if (!result.err) {
                 ctx.token = result.decode;
                 ctx.tokenCode = tokenCode.TOKEN_SUCCESS;
@@ -69,10 +68,10 @@ const Token = {
                 }
             }
         }
-        next();
+        await next();
     },
     tokenAfterRouter (ctx, next) {
-        if (Object.keys(ctx.payload).length) {
+        if (ctx.payload && Object.keys(ctx.payload).length) {
             let token = jwt.sign(ctx.payload, sKeys, {expiresIn: expiredTime});
             ctx.cookies.set('token', token);
         }

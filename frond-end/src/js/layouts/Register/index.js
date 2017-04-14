@@ -2,7 +2,8 @@
  * Created by wython on 2017/4/5.
  */
 import React from 'react'
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button } from 'antd';
+import { Form, Input, Tooltip, Icon,  Select, Checkbox, Button } from 'antd';
+import fetch from 'utils/fetcher'
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -38,7 +39,11 @@ class RegistrationForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                fetch.post('/api/register', { data: values }).then(function (result) {
+                    console.log(result);
+                }).catch(function (err) {
+                    alert(err);
+                })
             }
         });
     };
@@ -49,7 +54,7 @@ class RegistrationForm extends React.Component {
     checkPassword = (rule, value, callback) => {
         const form = this.props.form;
         if (value && value !== form.getFieldValue('password')) {
-            callback('Two passwords that you enter is inconsistent!');
+            callback('请确认两个密码相同!');
         } else {
             callback();
         }
@@ -94,6 +99,17 @@ class RegistrationForm extends React.Component {
         );
         return (
             <Form onSubmit={this.handleSubmit}>
+                <FormItem
+                    {...formItemLayout}
+                    label="用户名"
+                    hasFeedback
+                >
+                    {getFieldDecorator('username', {
+                        rules: [{ required: true, message: '请输入用户名!' }],
+                    })(
+                        <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="请输入用户名" />
+                    )}
+                </FormItem>
                 <FormItem
                     {...formItemLayout}
                     label="邮箱地址"
@@ -151,7 +167,7 @@ class RegistrationForm extends React.Component {
                     )}
                     hasFeedback
                 >
-                    {getFieldDecorator('昵称', {
+                    {getFieldDecorator('name', {
                         rules: [{ required: true, message: '请输入你的昵称!', whitespace: true }],
                     })(
                         <Input />
