@@ -104,10 +104,10 @@ export default class Header extends React.Component {
                     {
                         this.state.type === '登陆'?
                             <div className="login-form-wrapper">
-                                <LoginForm/>
+                                <LoginForm close={this.closeFormModal.bind(this)}/>
                             </div>:
                             <div className="register-form-wrapper">
-                                <Register/>
+                                <Register close={this.closeFormModal.bind(this)}/>
                             </div>
                     }
                 </Modal>

@@ -4,11 +4,21 @@
 import React from 'react'
 import Header from 'layouts/Header'
 import Footer from 'layouts/Footer'
-
-export default class App extends React.Component {
+import {connect} from 'react-redux';
+import store from '../../store';
+import { actionSetUserData } from '../../store/actions'
+class App extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props.children);
+    }
+    getChildContext() {
+        return {
+            userData: this.props.userData,
+            dispatches: this.props.dispatches
+        }
+    }
+    componentDidMount() {
+        console.log(this.store);
     }
     render() {
         return (
@@ -20,3 +30,29 @@ export default class App extends React.Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        userData: state.userData
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatches: {
+            getState (key) {
+                if (key) {
+                    return store.getState()[key];
+                } else {
+                    return store.getState();
+                }
+            },
+            setUserData (data) {
+                dispatch(actionSetUserData(data))
+            }
+        }
+    }
+}
+App.childContextTypes = {
+    userData: React.PropTypes.object,
+    dispatches: React.PropTypes.object
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

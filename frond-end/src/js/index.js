@@ -9,6 +9,10 @@ import '../css/index.css'
 import store from './store'
 import Routers from './routers'
 
+store.subscribe = function (state) {
+    console.log(store.getState())
+};
+
 let rootElement = document.getElementById('app');
 ReactDOM.render(
     <Provider store={store}>

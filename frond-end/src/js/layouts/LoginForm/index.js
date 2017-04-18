@@ -14,10 +14,15 @@ class LoginForm extends React.Component{
     }
     handleSubmit(e) {
         e.preventDefault();
+        let that = this;
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 fetch.post('/api/login', { data: values }).then(function (result) {
-                    console.log(result);
+                    if(result.retCode === '000000') {
+                        that.close();
+                    } else {
+
+                    }
                 })
             }
         });
