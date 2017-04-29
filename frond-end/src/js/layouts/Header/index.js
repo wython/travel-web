@@ -2,20 +2,22 @@
  * Created by wython on 2017/3/25.
  */
 import React from 'react';
-import {Row, Col, Menu, Button, Input, Modal} from 'antd';
+import {Dropdown, Row, Col, Menu, Button, Input, Modal, Popover} from 'antd';
 const Search = Input.Search;
+
 import './header.css';
 import {Link} from 'react-router'
 
 import LoginForm from '../LoginForm'
 import Register from '../Register'
 
-export default class Header extends React.Component {
+class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             formModal: false,
-            type: '登陆'
+            type: '登陆',
+            defaultFace: require('assets/default.png')
         }
     }
     showLoginForm (e) {
@@ -37,6 +39,9 @@ export default class Header extends React.Component {
     }
     handleCancel(e) {
         this.closeFormModal();
+    }
+    logOut(e) {
+
     }
     render() {
         return (
@@ -79,11 +84,41 @@ export default class Header extends React.Component {
                                                 </div>
                                             </Col>
                                             <Col span={12}>
-                                                <div className="unlogin-wrapper">
-                                                    <span className="login-span">
-                                                        <a onClick={this.showLoginForm.bind(this)}>登陆</a>
-                                                    </span>
-                                                    <Button onClick={this.showRegisterForm.bind(this)}>注册</Button>
+                                                {
+                                                    this.context.userData.username ?
+                                                        <div className="login-face-wrapper">
+                                                            <div>
+                                                                <Dropdown overlay={
+                                                                    <Menu>
+                                                                        <Menu.Item>
+                                                                            个人中心
+                                                                        </Menu.Item>
+                                                                        <Menu.Item>
+                                                                            <a onClick={this.logOut.bind(this)}>退出登陆</a>
+                                                                        </Menu.Item>
+                                                                    </Menu>
+                                                                }>
+                                                                    <a>
+                                                                        <img src={this.context.userData.headPic || this.state.defaultFace}/>
+                                                                    </a>
+                                                                </Dropdown>
+                                                            </div>
+                                                        </div>
+                                                        :
+                                                        <div className="unlogin-wrapper">
+                                                            <span className="login-span">
+                                                                <a onClick={this.showLoginForm.bind(this)}>
+                                                                    登陆
+                                                                </a>
+                                                            </span>
+                                                            <Button onClick={this.showRegisterForm.bind(this)}>
+                                                                注册
+                                                            </Button>
+                                                        </div>
+                                                }
+
+                                                <div>
+
                                                 </div>
                                             </Col>
                                         </Row>
@@ -104,10 +139,10 @@ export default class Header extends React.Component {
                     {
                         this.state.type === '登陆'?
                             <div className="login-form-wrapper">
-                                <LoginForm/>
+                                <LoginForm close={this.closeFormModal.bind(this)}/>
                             </div>:
                             <div className="register-form-wrapper">
-                                <Register/>
+                                <Register close={this.closeFormModal.bind(this)}/>
                             </div>
                     }
                 </Modal>
@@ -115,3 +150,8 @@ export default class Header extends React.Component {
         )
     }
 }
+
+Header.contextTypes = {
+    userData: React.PropTypes.object
+};
+export default Header;

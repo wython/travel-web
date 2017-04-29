@@ -3,7 +3,8 @@
  */
 import React from 'react'
 import { Form, Input, Tooltip, Icon,  Select, Checkbox, Button } from 'antd';
-import fetch from 'utils/fetcher'
+import fetch from 'utils/fetcher';
+import {hashHistory} from 'react-router'
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -37,10 +38,17 @@ class RegistrationForm extends React.Component {
     };
     handleSubmit = (e) => {
         e.preventDefault();
+        const close = this.props.close;
+        let {setUserData} = this.context.dispatches;
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 fetch.post('/api/register', { data: values }).then(function (result) {
-                    console.log(result);
+                    if(result.retCode === '000000') {
+                        setUserData(result.data);
+                        close();
+                    } else {
+
+                    }
                 }).catch(function (err) {
                     alert(err);
                 })
@@ -66,6 +74,20 @@ class RegistrationForm extends React.Component {
         }
         callback();
     };
+    usernameBlur(e) {
+        let username = e.target.value;
+        let that = this;
+        fetch.post('/api/checkUsername', { data: { username } }, function (result) {
+            if(result.retCode !== '000000') {
+                that.props.form.setFields({
+                    username: {
+                        value: username,
+                        errors: [new Error('用户名已存在')]
+                    }
+                })
+            }
+        })
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
@@ -107,7 +129,11 @@ class RegistrationForm extends React.Component {
                     {getFieldDecorator('username', {
                         rules: [{ required: true, message: '请输入用户名!' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="请输入用户名" />
+                        <Input prefix={<Icon type="user"
+                                             style={{ fontSize: 13 }} />}
+                               placeholder="请输入用户名"
+                               onBlur={this.usernameBlur.bind(this)}
+                        />
                     )}
                 </FormItem>
                 <FormItem
@@ -197,5 +223,7 @@ class RegistrationForm extends React.Component {
         );
     }
 }
-
+RegistrationForm.contextTypes = {
+    dispatches: React.PropTypes.object
+};
 export default Form.create({})(RegistrationForm);

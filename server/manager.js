@@ -13,6 +13,7 @@
 //
 // orm._orm.sync({force: true});
 require('babel-register');
+
 const App = require('./libs/app');
 
 const setting = require('./setting');

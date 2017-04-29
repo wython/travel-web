@@ -2,12 +2,12 @@
  * Created by wython on 2017/3/25.
  */
 
-import {SET_USER_DATA, actionSetUserData} from '../actions'
+import {SET_USER_DATA} from '../actions'
 
-export function setUserData(state = {}, type) {
-    switch (type) {
+export function setUserData(state = {}, action) {
+    switch (action.type) {
         case SET_USER_DATA:
-            return type.data;
+            return Object.assign({}, state, action.data);
         default:
             return {};
     }

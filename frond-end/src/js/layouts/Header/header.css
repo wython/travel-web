@@ -65,3 +65,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.login-face-wrapper img{
+    border-radius: 45px;
+    width: 45px;
+    height: 45px;
+}
