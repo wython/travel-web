@@ -10,5 +10,3 @@ const setting = require('./server/setting');
 let app = App(setting);
 app.start();
 
-
-
