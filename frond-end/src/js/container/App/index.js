@@ -6,7 +6,7 @@ import Header from 'layouts/Header'
 import Footer from 'layouts/Footer'
 import {connect} from 'react-redux';
 import store from '../../store';
-import { actionSetUserData } from '../../store/actions'
+import { actionSetUserData,actionDelUserData } from '../../store/actions'
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -47,6 +47,9 @@ function mapDispatchToProps(dispatch) {
             },
             setUserData (data) {
                 dispatch(actionSetUserData(data))
+            },
+            delUserData () {
+                dispatch (actionDelUserData())
             }
         }
     }

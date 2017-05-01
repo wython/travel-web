@@ -7,7 +7,8 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import '../css/index.css'
 import store from './store'
-import Routers from './routers'
+import RoutersInit from './routers'
+const Routers = RoutersInit(store);
 
 // store.subscribe = function (state) {
 //     console.log(store.getState())

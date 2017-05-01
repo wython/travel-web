@@ -4,7 +4,7 @@
 import React from 'react';
 import {Dropdown, Row, Col, Menu, Button, Input, Modal, Popover} from 'antd';
 const Search = Input.Search;
-
+import fetch from 'utils/fetcher';
 import './header.css';
 import {Link} from 'react-router'
 
@@ -41,7 +41,12 @@ class Header extends React.Component {
         this.closeFormModal();
     }
     logOut(e) {
-
+        let {delUserData} = this.context.dispatches;
+        fetch.get('/api/logout', {}).then((res) => {
+            delUserData();
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     render() {
         return (
@@ -152,6 +157,7 @@ class Header extends React.Component {
 }
 
 Header.contextTypes = {
-    userData: React.PropTypes.object
+    userData: React.PropTypes.object,
+    dispatches: React.PropTypes.object
 };
 export default Header;

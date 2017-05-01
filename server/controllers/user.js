@@ -2,10 +2,16 @@
  * Created by wython on 2017/3/21.
  */
 const bcrypt = require('bcrypt-node');
+const verifyToken = require('../service').verifyToken;
 
 module.exports = {
     async verifyLogin (ctx, next) {
-
+        ctx.body = {
+            retCode: ctx.tokenCode.code,
+            retMsg: ctx.tokenCode.msg,
+            data: ctx.token
+        };
+        await next();
     },
     async login(ctx, next) {
         let { userName, password } = ctx.request.body;
@@ -98,6 +104,16 @@ module.exports = {
             }
         }
         await next();
+    },
+    async logOut(ctx, next) {
+        ctx.cookies.set('token', null, {
+            maxAge: 0,
+            expires: new Date(0)
+        });
+        ctx.body = {
+            retCode: '000000',
+            retMsg: '退出登录成功'
+        }
     },
     good (ctx) {
         ctx.body = 'good';
