@@ -26,5 +26,17 @@ module.exports = {
     },
     price: {
         type: Sequelize.INTEGER
+    },
+    hotelType: {
+        /**
+         * long: '长住型'
+         * travel: '度假型'
+         * car: '汽车型'
+         * center: '市中心区酒店'
+         * plane: '机场酒店'
+         * business: '商务酒店'
+         */
+        type: Sequelize.ENUM('long', 'travel', 'car', 'center', 'plane', 'business'),
+        allowNull: false
     }
 };

@@ -2,7 +2,7 @@
  * Created by wython on 2017/3/30.
  */
 
-const Sequelize = require('sequelize');;
+const Sequelize = require('sequelize');
 
 module.exports = {
     orderFor: {

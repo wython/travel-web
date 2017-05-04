@@ -44,6 +44,7 @@ module.exports = {
         if(!Array.isArray(arrays)) throw new TypeError("Models lists must be a array!");
         const models = requireDir(this._context.modelDir);
         for (let key in arrays) {
+            if(key === 'relations') continue;
             this._orm.define(arrays[key], models[arrays[key]])
         }
     },
@@ -52,7 +53,12 @@ module.exports = {
         const models = requireDir(this._context.modelDir);
         this._models = {};
         for (let key in models) {
-            this._models[key] = this._orm.define(key, models[key], { engine: 'MYISAM' });
+            if(key === 'relations') continue;
+            this._models[key] = this._orm.define(key, models[key]);
+        }
+        if(models['relations']) {
+            let relations = models['relations'];
+            relations(this._models);
         }
     }
 };

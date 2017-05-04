@@ -20,4 +20,7 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
     },
+    destination: {
+        type: Sequelize.STRING(10)
+    }
 };
