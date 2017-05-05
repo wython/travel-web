@@ -6,6 +6,7 @@ import React from 'react';
 import {Input, Button, Row, Col, Icon, Card} from 'antd';
 const Search = Input.Search;
 import './tips.css';
+import TravelTips from 'layouts/TravelTips';
 
 class Tips extends React.Component{
     render() {
@@ -21,7 +22,7 @@ class Tips extends React.Component{
                             <Col className="tips-col" span={4}>
                                 <Button type="primary" className="tips-publish_button">
                                     <Icon type="edit" />
-                                发布攻略
+                                编写攻略
                                 </Button>
                             </Col>
                         </Row>
@@ -29,7 +30,12 @@ class Tips extends React.Component{
                     </header>
                 </div>
                 <div className="tips-recommdend_wrapper">
-
+                    <h2>
+                        <span>旅游攻略推荐</span>
+                    </h2>
+                    <div className="tips-list-wrapper">
+                        <TravelTips/>
+                    </div>
                 </div>
             </div>
         )

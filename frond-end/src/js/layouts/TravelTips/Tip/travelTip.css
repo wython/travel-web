@@ -1,0 +1,35 @@
+.travel-tip{
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.tips-user_box{
+    display: flex;
+    align-items: center;
+}
+.tips-user_box img{
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    margin-right: 10px;
+}
+.tips-user_box span{
+    font-size: 16px;
+}
+.tips-user_box time{
+    color: #cccccc;
+    margin-left: 10px;
+}
+.travel-tips_title{
+    margin-top: 20px;
+    font-size: 24px;
+}
+.travel-tips_article_mess{
+    text-align: right;
+}
+.travel-tips_article_mess span{
+    margin-right: 20px;
+}
+.travel-tips_sum {
+    padding: 20px 0;
+}
