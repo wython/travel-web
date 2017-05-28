@@ -10,6 +10,8 @@ import store from './store'
 import RoutersInit from './routers'
 const Routers = RoutersInit(store);
 
+//wangEditor
+
 // store.subscribe = function (state) {
 //     console.log(store.getState())
 // };

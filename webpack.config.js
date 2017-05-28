@@ -24,7 +24,7 @@ module.exports = function (debug) {
         module: {
             rules: [
                 {
-                    test: /\.(jpg|png|gif)$/i,
+                    test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                     loader: 'url-loader?limit=1000&name=img/[name]-[hash:10].[ext]'
                 },
                 {

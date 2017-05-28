@@ -5,23 +5,68 @@
 import React from 'react';
 import { Carousel, Button, Icon } from 'antd';
 import './homepage.css';
+import fetch from 'utils/fetcher'
 
 class HomePage extends React.Component {
+    state = {
+        dataSource: []
+    }
+    getPhoto = () => {
+        let that = this;
+        fetch.get('/api/admin/homePhoto', { data: {}}).then((result) => {
+            if(result.retCode === '000000') {
+                that.setState({
+                    dataSource: result.data
+                })
+            } else {
+
+            }
+        })
+    };
+    componentWillMount() {
+        this.getPhoto()
+    }
+
     render() {
         return (
             <div className="home-page">
                 <div className="banner-wrapper" id="banner-wrapper">
                     <Carousel className="banner"
-                              autopaly
+                              autoplay={true}
                     >
-                        <div><a><img/></a></div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
+                        {
+                            this.state.dataSource.length ?
+                                this.state.dataSource.map((item) =>
+                                    (<div>
+                                        <a href={item.href}>
+                                            <img style={{ margin: 'auto' }} width="100%" height='340px' className="home-img" src={item.imgUrl}/>
+                                        </a>
+                                    </div>)):
+                                <div><h1>暂无数据</h1></div>
+                        }
                     </Carousel>
                 </div>
-                <div></div>
-                <div></div>
+                <div className="home-content_wrapper">
+                    <div className="commend-wrapper">
+                        <h1>
+                            <span className="commend-title">旅游路线推荐</span>
+                        </h1>
+                        <p>暂无</p>
+                    </div>
+                    <div className="commend-wrapper">
+                        <h1>
+                            <span className="commend-title">酒店推荐</span>
+                        </h1>
+                        <p>暂无</p>
+                    </div>
+                    <div className="commend-wrapper last_commend">
+                        <h1>
+                            <span className="commend-title">旅游攻略推荐</span>
+                        </h1>
+                        <p>暂无</p>
+                    </div>
+                </div>
+
             </div>
         )
     }

@@ -14,5 +14,25 @@ module.exports = {
         } else {
             return false;
         }
+    },
+    async checkUsername(ctx, isAdmin) {
+        let model = isAdmin ? ctx.models.Admin : ctx.models.Users;
+        let {username} = ctx.request.body;
+        let sqlResult = await model.findAll({
+            where: {
+                username
+            }
+        });
+        if(sqlResult.length != 0) {
+            ctx.body = {
+                retCode: '000001',
+                retMsg: '用户已存在'
+            }
+        } else {
+            ctx.body = {
+                retCode: '000000',
+                retMsg: '用户不存在'
+            }
+        }
     }
 };

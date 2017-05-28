@@ -22,7 +22,7 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div style={{ background: '#f4f4f4' }}>
                 <Header/>
                 {this.props.children || 'i am app'}
                 <Footer/>

@@ -10,7 +10,7 @@ export default class TravelTips extends React.Component{
     render() {
         return (
             <div>
-                <Tip></Tip>
+                <Tip item={this.props.item}/>
             </div>
         )
     }

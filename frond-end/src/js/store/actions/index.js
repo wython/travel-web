@@ -4,6 +4,8 @@
 
 export const SET_USER_DATA = 'SET_USER_DATA';
 export const DET_USER_DATA = 'DEL_USER_DATA';
+export const SET_ADMIN_USER_DATA = 'SET_ADMIN_USER_DATA';
+export const DET_ADMIN_USER_DATA = 'DEL_ADMIN_USER_DATA';
 
 
 //action create function
@@ -17,5 +19,21 @@ export function actionSetUserData(data) {
 export function actionDelUserData() {
     return {
         type: DET_USER_DATA
+    }
+}
+
+//action for admin
+
+export function actionSetAdminUserData(data) {
+    return {
+        type: SET_ADMIN_USER_DATA,
+        data
+    }
+}
+
+
+export function actionDelAdminUserData() {
+    return {
+        type: DET_ADMIN_USER_DATA
     }
 }

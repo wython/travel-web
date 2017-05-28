@@ -1,0 +1,18 @@
+.publish-page{
+    width: 80%;
+    padding: 10px;
+    background: #ffffff;
+    margin: 20px auto;
+    border: 1px solid #cccccc;
+}
+.publish-page h1{
+    border-left: 4px solid #108de8;
+    padding-left: 10px;
+}
+.publish-title-wrapper{
+    padding: 20px;
+}
+.publish-title_input{
+    height: 50px;
+    font-size: 30px;
+}

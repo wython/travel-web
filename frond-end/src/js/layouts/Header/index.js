@@ -92,22 +92,20 @@ class Header extends React.Component {
                                                 {
                                                     this.context.userData.username ?
                                                         <div className="login-face-wrapper">
-                                                            <div>
-                                                                <Dropdown overlay={
-                                                                    <Menu>
-                                                                        <Menu.Item>
+                                                            <Dropdown overlay={
+                                                                <Menu>
+                                                                    <Menu.Item>
                                                                             个人中心
-                                                                        </Menu.Item>
-                                                                        <Menu.Item>
-                                                                            <a onClick={this.logOut.bind(this)}>退出登陆</a>
-                                                                        </Menu.Item>
-                                                                    </Menu>
-                                                                }>
-                                                                    <a>
-                                                                        <img src={this.context.userData.headPic || this.state.defaultFace}/>
-                                                                    </a>
-                                                                </Dropdown>
-                                                            </div>
+                                                                    </Menu.Item>
+                                                                    <Menu.Item>
+                                                                        <a onClick={this.logOut.bind(this)}>退出登陆</a>
+                                                                    </Menu.Item>
+                                                                </Menu>
+                                                            }>
+                                                                <a>
+                                                                    <img src={this.context.userData.headPic || this.state.defaultFace}/>
+                                                                </a>
+                                                            </Dropdown>
                                                         </div>
                                                         :
                                                         <div className="unlogin-wrapper">

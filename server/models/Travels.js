@@ -18,13 +18,5 @@ module.exports = {
     position: {
         type: Sequelize.STRING(30),
         allowNull: false
-    },
-    team: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Teams',
-            key: 'id'
-        }
     }
 };

@@ -1,5 +1,5 @@
 node_modules
 .idea
-
+server/static/upload
 server/public
 

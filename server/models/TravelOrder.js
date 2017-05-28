@@ -5,13 +5,13 @@
 const Sequelize = require('sequelize');
 
 module.exports = {
-    orderFor: {
+    travelId: {
         type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    type: {
-        type: Sequelize.ENUM('travel','hotel'),
-        allowNull: false
+        allowNull: false,
+        references: {
+             model: 'Travels',
+             key: 'id'
+        }
     },
     beginTime: {
         type: Sequelize.DATE,
@@ -22,11 +22,11 @@ module.exports = {
         allowNull: false
     },
     user: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(16),
         allowNull: false,
         references: {
             model: 'Users',
-            key: 'id'
+            key: 'username'
         }
     }
 };

@@ -2,7 +2,6 @@
  * Created by wython on 2017/3/21.
  */
 const bcrypt = require('bcrypt-node');
-const verifyToken = require('../service').verifyToken;
 
 module.exports = {
     async verifyLogin (ctx, next) {

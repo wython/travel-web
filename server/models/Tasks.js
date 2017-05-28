@@ -4,8 +4,13 @@
 const Sequelize = require('sequelize');
 
 module.exports = {
-    username: {
-        type: Sequelize.STRING(30),
+    tid: {
+        type: Sequelize.STRING(20),
+        allowNull: false,
+        primaryKey: true
+    },
+    user: {
+        type: Sequelize.STRING(16),
         allowNull: false,
         references: {
             model: 'Users',
@@ -22,5 +27,8 @@ module.exports = {
     },
     destination: {
         type: Sequelize.STRING(10)
+    },
+    scope: {
+        type: Sequelize.INTEGER
     }
 };

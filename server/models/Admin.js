@@ -10,10 +10,6 @@ module.exports = {
         allowNull: false,
         unique: true
     },
-    name: {
-        type: Sequelize.STRING(16),
-        allowNull: false,
-    },
     realName: {
         type: Sequelize.STRING(8)
     },

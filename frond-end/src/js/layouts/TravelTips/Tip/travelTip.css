@@ -32,4 +32,6 @@
 }
 .travel-tips_sum {
     padding: 20px 0;
+    overflow: hidden;
+    height: 76px;
 }

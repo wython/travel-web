@@ -1,0 +1,12 @@
+.admin-login-wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin-login-wrapper h1{
+    margin: 24px 0;
+    text-align: center;
+}
+

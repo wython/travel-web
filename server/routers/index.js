@@ -11,8 +11,24 @@ module.exports = {
     'post /api/register': Controllers.user.register,
     'get /api/logout': Controllers.user.logOut,
 
+    //tisks
+    'post /api/publish': Controllers.task.publish,
+    'get /api/getTasks': Controllers.task.getTasks,
+
     'get /api/static': Controllers.static.getStatic,
     'get /': Controllers.home.index,
     'get|post /good': Controllers.user.good,
-    'post /api/checkUsername': Controllers.user.checkUsername
+    'post /api/checkUsername': Controllers.user.checkUsername,
+
+    //admin
+    'get /api/admin/createUser': Controllers.admin.createUser,
+    'post /api/admin/checkUsername': Controllers.admin.checkUsername,
+    'post /api/admin/login': Controllers.admin.login,
+    'post /api/admin/verifyToken': Controllers.admin.verifyToken,
+    'get /api/admin/homePhoto': Controllers.admin.getHomePhoto,
+    'post /api/admin/setPhoto': Controllers.admin.setHomePhoto,
+    'post /api/admin/delete/photo': Controllers.admin.delHomePhoto,
+
+    //upload
+    'put|post /api/upload': Controllers.file.upload
 };
