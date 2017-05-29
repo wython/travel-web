@@ -4,10 +4,12 @@
 
 module.exports = function (models) {
 
-    let { Tasks, Comments, Users, HotelOrder, TravelOrder, Travels, Hotels } = models;
+    let { RecommendHotel, RecommendTravel ,
+        HotelRoom, Tasks, Comments, Users,
+        HotelOrder, TravelOrder, Travels, Hotels } = models;
     Comments.hasMany(Comments, {
         as: 'commentList',
-        foreignKey: 'target_comment'
+        foreignKey: 'targetComment'
     });
 
 
@@ -19,7 +21,7 @@ module.exports = function (models) {
 
     Tasks.hasMany(Comments, {
         as: 'taskComment',
-        foreignKey: 'target_blog'
+        foreignKey: 'targetTask'
     });
 
     Users.hasMany(Comments, {
@@ -44,20 +46,37 @@ module.exports = function (models) {
     });
 
     Hotels.hasMany(HotelOrder, {
-        as: 'hotalsOrder',
+        as: 'hotelsOrder',
         foreignKey: 'hotalId'
-    })
+    });
 
     //定义评论点赞
     Comments.belongsToMany(Users, {
-        through: 'commentLikes',
+        through: 'CommentLikes',
         foreignKey: 'comments_id',
         as: 'commentLikes'
     });
 
     Users.belongsToMany(Comments, {
-        through: 'commentLikes',
+        through: 'CommentLikes',
         foreignKey: 'users_id',
         as: 'likeComments'
+    });
+
+    //酒店房间
+    Hotels.hasMany(HotelRoom, {
+        as: 'hotelsRoom',
+        foreignKey: 'targetHotel'
+    });
+
+    //推荐酒店
+    Hotels.hasMany(RecommendHotel, {
+        as: 'recommendHotel',
+        foreignKey: 'targetHotel'
+    });
+
+    Travels.hasMany(RecommendTravel, {
+        as: 'recommendTravel',
+        foreignKey: 'targetTravel'
     })
 };

@@ -120,7 +120,7 @@ class AdminPhotoSetting extends React.Component{
                         that.props.form.resetFields();
                         that.setState({
                             reset: false
-                        })
+                        });
                         that.setState({
                             reset: true
                         })
@@ -135,7 +135,7 @@ class AdminPhotoSetting extends React.Component{
         return (
             <div className="admin-Photo_setting">
                 <h1>首页轮播图</h1>
-                <Table columns={this.columns} dataSource={this.state.dataSource}/>
+                <Table rowKey="id" columns={this.columns} dataSource={this.state.dataSource}/>
                 <Button onClick={this.addPhoto.bind(this)}>
                     <Icon type="plus" />
                     添加新轮播图

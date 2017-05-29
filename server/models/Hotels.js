@@ -27,6 +27,9 @@ module.exports = {
     price: {
         type: Sequelize.INTEGER
     },
+    nomalPrice: {
+        type: Sequelize.INTEGER
+    },
     hotelType: {
         /**
          * long: '长住型'

@@ -1,0 +1,35 @@
+.travel-page-wrapper{
+    width: 1080px;
+    background: #ffffff;
+    min-height: 300px;
+    border: 1px solid #cccccc;
+    margin:20px auto;
+}
+.recommend-travel-wrapper {
+    margin: 10px;
+    background: #f6fbff;
+    border: 2px solid #cce1f1;
+    padding: 10px;
+}
+.all-travel-wrapper{
+    margin: 10px;
+    border:1px solid #108de8;
+    border-radius: 10px 10px 0 0;
+}
+.all-travel-wrapper h2{
+    background: #108de8;
+    color: white;
+    border:1px solid #108de8;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+.travel-content{
+    padding: 15px;
+}
+.card-wrapper{
+    float: left;
+    margin: 5px;
+}
+.clear-box{
+    clear: both;
+}

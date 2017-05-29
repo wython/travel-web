@@ -3,3 +3,9 @@
     background: #f4f4f4;
     height: 100%;
 }
+.admin-nav_wrapper .ant-layout-content {
+    overflow: visible;
+}
+.fate-color{
+    color: #ff6600;
+}

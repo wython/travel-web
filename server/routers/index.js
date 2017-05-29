@@ -28,7 +28,10 @@ module.exports = {
     'get /api/admin/homePhoto': Controllers.admin.getHomePhoto,
     'post /api/admin/setPhoto': Controllers.admin.setHomePhoto,
     'post /api/admin/delete/photo': Controllers.admin.delHomePhoto,
-
+    'post|get /api/admin/logout': Controllers.admin.logOut,
+    'post /api/add/travel': Controllers.admin.addTravel,
+    'get /api/get/travel': Controllers.admin.getTravelLine,
+    'post /api/admin/delete/travel': Controllers.admin.delTravelLine,
     //upload
     'put|post /api/upload': Controllers.file.upload
 };

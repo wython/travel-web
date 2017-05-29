@@ -66,6 +66,29 @@ const getTipsContentPage = (location, cb) => {
         cb(null, require('../pages/TipsContentPage'))
     })
 };
+
+const getAdminTravelPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/AdminTravelPage'))
+    })
+};
+
+const getAdminHotelPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/AdminHotelPage'))
+    })
+};
+const getAdminUsersPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/AdminUsersPage'))
+    })
+};
+
+const getAddTravelPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/AddTravelPage'))
+    })
+};
 const Routers = (store) => {
     const onRootEnter = (nextState, replaceState, cb) => {
         fetch.post('/api/user/token', {}).then((res) => {
@@ -114,7 +137,12 @@ const Routers = (store) => {
                 <Route path="/admin" component={Admin}>
                     <Route path="login" getComponent={getAdminLoginPage}/>
                     <Route path="app" getComponent={getAdminApp} onEnter={onAdminEnter}>
-                        <Route path="content" getComponent={getAdminContentPage}/>
+                        <IndexRoute getComponent={getAdminContentPage}/>
+                        <Route path="travel" getComponent={getAdminTravelPage}>
+                            <Route path="add" getComponent={getAddTravelPage}/>
+                        </Route>
+                        <Route path="hotel" getComponent={getAdminHotelPage}/>
+                        <Route path="users" getComponent={getAdminUsersPage}/>
                     </Route>
                 </Route>
             </Router>

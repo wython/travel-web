@@ -4,7 +4,7 @@
 const Sequelize = require('sequelize');
 
 module.exports = {
-    authors: {
+    author: {
         type: Sequelize.STRING(16),
         allowNull: false,
         references: {

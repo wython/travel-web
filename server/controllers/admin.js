@@ -160,5 +160,58 @@ module.exports = {
                 retCode: '000001'
             }
         }
+        next();
+    },
+    async delTravelLine(ctx, next) {
+        let { id } = ctx.request.body;
+        let {Travels} = ctx.models;
+        let result = await Travels.destroy({
+            where: {
+                id
+            }
+        });
+        if(result) {
+            ctx.body = {
+                retCode: '000000'
+            }
+        } else {
+            ctx.body = {
+                retCode: '000001'
+            }
+        }
+    },
+    /**
+     * 添加旅游路线
+     * @param ctx
+     * @param next
+     * @returns {Promise.<void>}
+     */
+    async addTravel(ctx, next) {
+        let {Travels} = ctx.models;
+        let result = await Travels.create(ctx.request.body);
+        if(result) {
+            ctx.body = {
+                retCode: '000000'
+            }
+        } else {
+            ctx.body = {
+                retCode: '000001'
+            }
+        }
+        next();
+    },
+    /**
+     * 获取旅游路线
+     * @param ctx
+     * @param next
+     * @returns {Promise.<void>}
+     */
+    async getTravelLine(ctx, next) {
+        let {Travels} = ctx.models;
+        let resultList = await Travels.findAll();
+        ctx.body = {
+            retCode: '000000',
+            data: resultList
+        }
     }
 };

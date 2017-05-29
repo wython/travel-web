@@ -5,6 +5,7 @@ import React from 'react';
 import './adminNav.css';
 import { Layout, Menu, Breadcrumb, Icon, Row, Col , Dropdown} from 'antd';
 import fetch from 'utils/fetcher';
+import {hashHistory} from 'react-router';
 import WangEditor from 'components/WangEditor';
 import {Link} from 'react-router';
 const { Header, Content, Footer, Sider } = Layout;
@@ -31,7 +32,8 @@ class AdminNav extends React.Component {
             delAdminUserData();
         }).catch((err) => {
             console.log(err);
-        })
+        });
+        hashHistory.push('/admin/login');
     }
     render() {
         return (
@@ -45,42 +47,44 @@ class AdminNav extends React.Component {
                         <div className="logo" />
                         <Menu theme="dark" mode={this.state.mode} defaultSelectedKeys={['6']}>
                             <Menu.Item key="4">
-                                <span>
-                                    <Icon type="schedule" />
-                                    <span className="nav-text">
-                                        <Link className="menu-link" to="/admin/app/content">
+                                <Link className="menu-link" to="/admin/app/">
+                                    <span>
+                                        <Icon type="schedule" />
+                                        <span className="nav-text">
                                             首页内容管理
-                                        </Link>
+                                        </span>
                                     </span>
-                                </span>
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="1">
-                                <span>
-                                    <Icon type="home" />
-                                    <span className="nav-text">
-                                        <Link className="menu-link" to="/admin/hotal">
+                                <Link className="menu-link" to="/admin/app/hotel">
+                                    <span>
+                                        <Icon type="home" />
+                                        <span className="nav-text">
                                             酒店管理
-                                        </Link>
+                                        </span>
                                     </span>
-                                </span>
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="2">
-                                <span>
-                                    <Icon type="car" />
-                                    <Link className="menu-link" to="/admin/hotal">
-                                            旅游路线管理
-                                    </Link>
-                                </span>
+                                <Link className="menu-link" to="/admin/app/travel">
+                                    <span>
+                                        <Icon type="car" />
+
+                                        旅游路线管理
+
+                                    </span>
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="3">
-                                <span>
-                                    <Icon type="user" />
-                                    <span className="nav-text">
-                                        <Link className="menu-link" to="/admin/hotal">
-                                            用户管理
-                                        </Link>
+                                <Link className="menu-link" to="/admin/app/users">
+                                    <span>
+                                        <Icon type="user" />
+                                        <span className="nav-text">
+                                                用户管理
+                                        </span>
                                     </span>
-                                </span>
+                                </Link>
                             </Menu.Item>
                         </Menu>
                     </Sider>
@@ -99,7 +103,7 @@ class AdminNav extends React.Component {
                                                         个人中心
                                                     </Menu.Item>
                                                     <Menu.Item>
-                                                        <a >退出登陆</a>
+                                                        <a onClick={this.logOut.bind(this)}>退出登陆</a>
                                                     </Menu.Item>
                                                 </Menu>
                                             }>
@@ -114,8 +118,7 @@ class AdminNav extends React.Component {
                         </Header>
                         <Content style={{ margin: '0 16px' }}>
                             <Breadcrumb style={{ margin: '12px 0' }}>
-                                <Breadcrumb.Item>User</Breadcrumb.Item>
-                                <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                                <Breadcrumb.Item>旅游后台管理</Breadcrumb.Item>
                             </Breadcrumb>
                             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                                 { this.props.children }
