@@ -3,13 +3,16 @@
  */
 
 import React from 'react';
+import AdminHotelTable from 'layouts/AdminHotelTable';
 
-class AdminHotalPage extends  React.Component{
+class AdminHotelPage extends  React.Component{
     render() {
         return (
-            <div>hotal</div>
+            <div className="admin-travel-page-wrapper">
+                { this.props.children ? this.props.children : <AdminHotelTable/> }
+            </div>
         )
     }
 }
 
-module.exports = AdminHotalPage;
+module.exports = AdminHotelPage;

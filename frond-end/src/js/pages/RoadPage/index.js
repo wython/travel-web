@@ -10,7 +10,7 @@ import {Link} from 'react-router';
 class RoadPage extends React.Component{
     state = {
         travelList: []
-    }
+    };
     componentWillMount() {
         let that = this;
         fetch.get('/api/get/travel').then((result) => {
@@ -33,7 +33,7 @@ class RoadPage extends React.Component{
                     <h2>所有旅游路线</h2>
                     <div className="travel-content">
                         {
-                            this.state.travelList.map((item, index) => {
+                            this.state.travelList.length ? this.state.travelList.map((item, index) => {
                                 return (
                                     <div key={index} className="card-wrapper">
                                         <Link to={"/t/" + item.id}>
@@ -51,7 +51,7 @@ class RoadPage extends React.Component{
                                             </Card>
                                         </Link>
                                     </div>
-                                )})
+                                )}) : '暂无数据'
                         }
                         <div className="clear-box"></div>
                     </div>

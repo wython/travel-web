@@ -2,28 +2,26 @@
  * Created by wython on 2017/5/22.
  */
 import React from 'react';
-import './line.css';
-import {DatePicker, Tabs} from 'antd';
-const TabPane = Tabs.TabPane;
-import {Row, Col, Form, Input, Button} from 'antd';
+import '../LineTravelPage/line.css';
+import {DatePicker,Rate} from 'antd';
+import {Row, Col, Form , Button} from 'antd';
 const FormItem = Form.Item;
 import fetch from 'utils/fetcher';
 
-class LineTravelPage extends React.Component{
+class HotelMessage extends React.Component{
     state = {
-        line: ''
+        hotel: ''
     }
     componentWillMount () {
         let that = this;
-        fetch.get('/api/get/line', {
+        fetch.get('/api/get/hotel', {
             data: {
-                id: this.props.params.tid
+                id: this.props.params.hid
             }
         }).then((res) => {
             if(res.retCode === '000000') {
-                console.log(res.data);
                 that.setState({
-                    line: res.data
+                    hotel: res.data
                 })
             } else {
 
@@ -44,22 +42,20 @@ class LineTravelPage extends React.Component{
         return (
             <div>
                 <div className="travel-item-box">
-                    <h1>{this.state.line.name}</h1>
+                    <h1>{this.state.hotel.hotelName}</h1>
                     <div>
                         <Row className='travel-item-row'>
                             <Col span={12}>
-                                <img src={this.state.line.travelPic}/>
+                                <img src={this.state.hotel.hotelPic}/>
                             </Col>
                             <Col span={12}>
                                 <ul>
-                                    <li>门市价: ¥<del>{this.state.line.normalPrice}</del></li>
-                                    <li>优惠价: ¥<span className="favourable">{this.state.line.fate}</span> 起</li>
-                                    <li>发团日期: {this.state.line.startTime}</li>
-                                    <li>出发城市: {this.state.line.beginCity}</li>
-                                    <li>行程天数: 5天</li>
-                                    <li>交通方式: {this.state.line.mode}</li>
+                                    <li>门市价: ¥<del>{this.state.hotel.nomalPrice}</del></li>
+                                    <li>优惠价: ¥<span className="favourable">{this.state.hotel.price}</span> 起</li>
+                                    <li>酒店地址: {this.state.hotel.hotelPosition}</li>
+                                    <li>酒店星级: <Rate value={this.state.hotel.hotelGrade} disabled/></li>
                                     <li>产品须知: <span className="favourable">{
-                                        this.state.line.descriptions
+                                        this.state.hotel.descriptions
                                     }</span></li>
                                 </ul>
                                 <div className="pay-box">
@@ -77,20 +73,9 @@ class LineTravelPage extends React.Component{
 
                     </div>
                 </div>
-                <div className="travel-item-box" >
-                    <Tabs>
-                        <TabPane key="1" tab="路程详解">
-                            <div dangerouslySetInnerHTML={{__html: this.state.line.information}}>
-
-                            </div>
-                        </TabPane>
-                        <TabPane key="2" tab="在线"></TabPane>
-                    </Tabs>
-                </div>
-
             </div>
         )
     }
 }
 
-module.exports = LineTravelPage;
+module.exports = HotelMessage;

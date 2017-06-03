@@ -179,6 +179,26 @@ module.exports = {
                 retCode: '000001'
             }
         }
+        next();
+    },
+    async delHotel(ctx, next) {
+        let { id } = ctx.request.body;
+        let {Hotels} = ctx.models;
+        let result = await Hotels.destroy({
+            where: {
+                id
+            }
+        });
+        if(result) {
+            ctx.body = {
+                retCode: '000000'
+            }
+        } else {
+            ctx.body = {
+                retCode: '000001'
+            }
+        }
+        next();
     },
     /**
      * 添加旅游路线
@@ -189,6 +209,20 @@ module.exports = {
     async addTravel(ctx, next) {
         let {Travels} = ctx.models;
         let result = await Travels.create(ctx.request.body);
+        if(result) {
+            ctx.body = {
+                retCode: '000000'
+            }
+        } else {
+            ctx.body = {
+                retCode: '000001'
+            }
+        }
+        next();
+    },
+    async addHotel(ctx, next) {
+        let {Hotels} = ctx.models;
+        let result = await Hotels.create(ctx.request.body);
         if(result) {
             ctx.body = {
                 retCode: '000000'
@@ -213,5 +247,56 @@ module.exports = {
             retCode: '000000',
             data: resultList
         }
+        next();
+    },
+    async getHotels(ctx, next) {
+        let {Hotels} = ctx.models;
+        let resultList = await Hotels.findAll();
+        ctx.body = {
+            retCode: '000000',
+            data: resultList
+        }
+        next();
+    },
+    async getTravelById(ctx, next) {
+        let {id} = ctx.query;
+        console.log(ctx.query);
+        let {Travels} = ctx.models;
+        let item = await Travels.findOne({
+            where: {
+                id
+            }
+        });
+        if(item) {
+            ctx.body = {
+                retCode: '000000',
+                data: item
+            }
+        } else {
+            ctx.body = {
+                retCode: '000001'
+            }
+        }
+        next();
+    },
+    async getHotel(ctx, next) {
+        let {id} = ctx.query;
+        let {Hotels} = ctx.models;
+        let item = await Hotels.findOne({
+            where: {
+                id
+            }
+        });
+        if(item) {
+            ctx.body = {
+                retCode: '000000',
+                data: item
+            }
+        } else {
+            ctx.body = {
+                retCode: '000001'
+            }
+        }
+        next();
     }
 };

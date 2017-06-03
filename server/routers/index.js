@@ -30,8 +30,12 @@ module.exports = {
     'post /api/admin/delete/photo': Controllers.admin.delHomePhoto,
     'post|get /api/admin/logout': Controllers.admin.logOut,
     'post /api/add/travel': Controllers.admin.addTravel,
+    'post /api/add/hotel': Controllers.admin.addHotel,
     'get /api/get/travel': Controllers.admin.getTravelLine,
+    'get /api/get/hotels': Controllers.admin.getHotels,
+    'get /api/get/hotel': Controllers.admin.getHotel,
     'post /api/admin/delete/travel': Controllers.admin.delTravelLine,
+    'get /api/get/line': Controllers.admin.getTravelById,
     //upload
     'put|post /api/upload': Controllers.file.upload
 };

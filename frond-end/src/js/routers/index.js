@@ -89,6 +89,18 @@ const getAddTravelPage = (location, cb) => {
         cb(null, require('../pages/AddTravelPage'))
     })
 };
+
+const getAddHotelPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/AddHotelPage'))
+    })
+};
+
+const getHotelMessPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/HotelMessage'))
+    })
+};
 const Routers = (store) => {
     const onRootEnter = (nextState, replaceState, cb) => {
         fetch.post('/api/user/token', {}).then((res) => {
@@ -133,6 +145,7 @@ const Routers = (store) => {
                     <Route path="road" getComponent={getRoadPage}/>
                     <Route path="hotal" getComponent={getHotalPage}/>
                     <Route path="t/:tid" getComponent={getLineTravelPage}/>
+                    <Route path="h/:hid" getComponent={getHotelMessPage}/>
                 </Route>
                 <Route path="/admin" component={Admin}>
                     <Route path="login" getComponent={getAdminLoginPage}/>
@@ -141,7 +154,9 @@ const Routers = (store) => {
                         <Route path="travel" getComponent={getAdminTravelPage}>
                             <Route path="add" getComponent={getAddTravelPage}/>
                         </Route>
-                        <Route path="hotel" getComponent={getAdminHotelPage}/>
+                        <Route path="hotel" getComponent={getAdminHotelPage}>
+                            <Route path="add" getComponent={getAddHotelPage}/>
+                        </Route>
                         <Route path="users" getComponent={getAdminUsersPage}/>
                     </Route>
                 </Route>

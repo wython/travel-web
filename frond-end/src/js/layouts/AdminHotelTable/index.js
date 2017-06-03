@@ -8,21 +8,21 @@ import fetch from 'utils/fetcher';
 
 export default class AdminTravelTable extends React.Component{
     state ={
-        travelList: []
-    }
+        hotelList: []
+    };
     constructor(props) {
         super(props);
         let that = this;
         this.columns = [
             {
-                title: '路线名字',
-                dataIndex: 'name',
+                title: '酒店名字',
+                dataIndex: 'hotelName',
                 key: 'title'
             },
             {
-                title: '路线预览',
-                dataIndex : 'travelPic',
-                key: 'travelPic',
+                title: '酒店预览',
+                dataIndex : 'hotelPic',
+                key: 'hotelPic',
                 render: (text, record) => {
                     return (
                         <img height="50px" src={text}/>
@@ -31,8 +31,8 @@ export default class AdminTravelTable extends React.Component{
             },
             {
                 title: '优惠价格',
-                dataIndex: 'fate',
-                key: 'fate'
+                dataIndex: 'price',
+                key: 'price'
             },
             {
                 title: '操作',
@@ -41,7 +41,7 @@ export default class AdminTravelTable extends React.Component{
                     return (
                         <div>
                             <a href="javascript:void(0)" onClick={(e) => {
-                                fetch.post('/api/admin/delete/travel', {
+                                fetch.post('/api/admin/delete/hotel', {
                                     data: {
                                         id: record.id
                                     }
@@ -52,7 +52,7 @@ export default class AdminTravelTable extends React.Component{
                                     }
                                 })
                             }}>删除</a>
-                            | <Link to="/admin/app/travel/add">修改</Link>
+                            | <Link to="/admin/app/hotel/add">修改</Link>
                         </div>
                     )
                 }
@@ -60,17 +60,17 @@ export default class AdminTravelTable extends React.Component{
         ];
     }
     onDelete = (index) =>{
-        const dataSource = [...this.state.travelList];
+        const dataSource = [...this.state.hotelList];
         dataSource.splice(index, 1);
-        this.setState({ travelList: dataSource });
+        this.setState({ hotelList: dataSource });
     };
     componentWillMount() {
         let that = this;
-        fetch.get('/api/get/travel').then((result) => {
+        fetch.get('/api/get/hotels').then((result) => {
             if(result.retCode === '000000') {
                 console.log(result.data);
                 that.setState({
-                    travelList: result.data
+                    hotelList: result.data
                 })
             }
         })
@@ -78,10 +78,10 @@ export default class AdminTravelTable extends React.Component{
     render () {
         return (
             <div>
-                <Table dataSource={this.state.travelList} columns={this.columns}/>
-                <Link to="/admin/app/travel/add">
+                <Table dataSource={this.state.hotelList} columns={this.columns}/>
+                <Link to="/admin/app/hotel/add">
                     <Button>
-                        <Icon type="plus" />添加新路线
+                        <Icon type="plus" />添加新酒店
                     </Button>
                 </Link>
             </div>
