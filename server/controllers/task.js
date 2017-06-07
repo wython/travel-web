@@ -39,5 +39,20 @@ module.exports = {
             retCode: '000000',
             data: resultList
         }
+    },
+    async getTask(ctx, next) {
+        let tid = ctx.query.id;
+        const {Tasks} = ctx.models;
+        let result = await Tasks.findOne({
+            where: {
+                tid
+            }
+        });
+
+        ctx.body = {
+            retCode: '000000',
+            data: result
+        }
+        next();
     }
 };

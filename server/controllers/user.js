@@ -30,6 +30,7 @@ module.exports = {
                     realName: user.realName,
                     sex: user.sex,
                     headPic: user.headPic,
+                    name: user.name
                 };
                 ctx.payload = data;
                 ctx.body = {

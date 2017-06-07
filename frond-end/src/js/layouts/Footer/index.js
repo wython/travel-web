@@ -1,11 +1,4 @@
-/**
- * Created by wython on 2017/3/30.
- */
 
-
-/**
- * Created by wython on 2017/3/25.
- */
 import React from 'react';
 import {Row, Col, Menu} from 'antd';
 import './footer.css';

@@ -3,11 +3,12 @@
  */
 
 import {createStore, combineReducers} from 'redux'
-import {userData,adminUserData} from './reducers'
+import {userData,adminUserData, orderData} from './reducers'
 
 let store = createStore(combineReducers({
     userData: userData,
-    adminUserData: adminUserData
+    adminUserData: adminUserData,
+    orderData: orderData
 }));
 
 export default store;

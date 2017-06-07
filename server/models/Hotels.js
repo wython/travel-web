@@ -27,7 +27,7 @@ module.exports = {
     price: {
         type: Sequelize.INTEGER
     },
-    nomalPrice: {
+    normalPrice: {
         type: Sequelize.INTEGER
     },
     hotelType: {

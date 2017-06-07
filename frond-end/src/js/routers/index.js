@@ -101,6 +101,18 @@ const getHotelMessPage = (location, cb) => {
         cb(null, require('../pages/HotelMessage'))
     })
 };
+
+const getUserPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/UserPage'))
+    })
+};
+
+const getOrderPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/OrderPage'))
+    })
+};
 const Routers = (store) => {
     const onRootEnter = (nextState, replaceState, cb) => {
         fetch.post('/api/user/token', {}).then((res) => {
@@ -144,8 +156,10 @@ const Routers = (store) => {
                     <Route path="publish" onEnter={isLogin} getComponent={getPublishPage}/>
                     <Route path="road" getComponent={getRoadPage}/>
                     <Route path="hotal" getComponent={getHotalPage}/>
+                    <Route path="user" getComponent={getUserPage}/>
                     <Route path="t/:tid" getComponent={getLineTravelPage}/>
                     <Route path="h/:hid" getComponent={getHotelMessPage}/>
+                    <Route path="order" getComponent={getOrderPage}/>
                 </Route>
                 <Route path="/admin" component={Admin}>
                     <Route path="login" getComponent={getAdminLoginPage}/>

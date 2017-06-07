@@ -14,11 +14,15 @@ module.exports = {
     //tisks
     'post /api/publish': Controllers.task.publish,
     'get /api/getTasks': Controllers.task.getTasks,
+    'get /api/get/task': Controllers.task.getTask,
 
     'get /api/static': Controllers.static.getStatic,
     'get /': Controllers.home.index,
     'get|post /good': Controllers.user.good,
     'post /api/checkUsername': Controllers.user.checkUsername,
+
+    //travel
+    'post /api/order/create': Controllers.order.createOrder,
 
     //admin
     'get /api/admin/createUser': Controllers.admin.createUser,

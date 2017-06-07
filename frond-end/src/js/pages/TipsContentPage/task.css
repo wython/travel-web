@@ -1,0 +1,33 @@
+.task-content_wrapper h1{
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.task-title {
+    border-bottom: 1px dashed #eeeeee;
+}
+.task-title p{
+    text-align: center;
+
+}
+.task-title p span{
+    color: #cccccc;
+    font-size: 10px;
+    margin-right: 20px;
+}
+.task-title .task-destination{
+    color: #ff6600;
+    font-size: 12px;
+}
+.task-content{
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+.task-mess{
+    padding: 20px;
+}
+.commend-box{
+    border-bottom: 1px dashed #eeeeee;
+    border-top: 1px dashed #eeeeee;
+}

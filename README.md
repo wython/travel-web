@@ -23,7 +23,7 @@
 
 后端启动:
 
-> node server.js
+> node server
 
 ## 项目细节
 后端使用工作时搭建的node服务器,基于koa内核,采用koa-router

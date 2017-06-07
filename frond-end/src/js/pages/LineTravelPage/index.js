@@ -3,7 +3,8 @@
  */
 import React from 'react';
 import './line.css';
-import {DatePicker, Tabs} from 'antd';
+import {hashHistory} from 'react-router';
+import {DatePicker, Tabs, message} from 'antd';
 const TabPane = Tabs.TabPane;
 import {Row, Col, Form, Input, Button} from 'antd';
 const FormItem = Form.Item;
@@ -27,6 +28,24 @@ class LineTravelPage extends React.Component{
                 })
             } else {
 
+            }
+        })
+    }
+    goBug (e) {
+        if(!(this.state.order && this.state.order.time)) {
+            message.info('请选择时间')
+        } else {
+            this.context.dispatches.setOrder(this.state.order);
+            hashHistory.push('order')
+        }
+    }
+    dateChange(value) {
+        this.setState({
+            order: {
+                id: this.state.line.id,
+                name: this.state.line.name,
+                fate: this.state.line.fate,
+                time: value
             }
         })
     }
@@ -65,10 +84,10 @@ class LineTravelPage extends React.Component{
                                 <div className="pay-box">
                                     <Form >
                                         <FormItem {...tailFormItemLayout} label="选择日期">
-                                            <DatePicker/>
+                                            <DatePicker onChange={this.dateChange.bind(this)}/>
                                         </FormItem>
                                         <FormItem {...tailFormItemLayout} label=' '>
-                                            <Button>立即预订</Button>
+                                            <Button onClick={this.goBug.bind(this)}>立即预订</Button>
                                         </FormItem>
                                     </Form>
                                 </div>
@@ -92,5 +111,10 @@ class LineTravelPage extends React.Component{
         )
     }
 }
+
+LineTravelPage.contextTypes = {
+    userData: React.PropTypes.object,
+    dispatches: React.PropTypes.object
+};
 
 module.exports = LineTravelPage;

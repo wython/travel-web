@@ -12,9 +12,6 @@ const Routers = RoutersInit(store);
 
 //wangEditor
 
-// store.subscribe = function (state) {
-//     console.log(store.getState())
-// };
 
 let rootElement = document.getElementById('app');
 ReactDOM.render(

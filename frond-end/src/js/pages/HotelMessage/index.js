@@ -50,7 +50,7 @@ class HotelMessage extends React.Component{
                             </Col>
                             <Col span={12}>
                                 <ul>
-                                    <li>门市价: ¥<del>{this.state.hotel.nomalPrice}</del></li>
+                                    <li>门市价: ¥<del>{this.state.hotel.normalPrice}</del></li>
                                     <li>优惠价: ¥<span className="favourable">{this.state.hotel.price}</span> 起</li>
                                     <li>酒店地址: {this.state.hotel.hotelPosition}</li>
                                     <li>酒店星级: <Rate value={this.state.hotel.hotelGrade} disabled/></li>

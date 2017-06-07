@@ -26,6 +26,9 @@ module.exports = {
     headPic: {
         type: Sequelize.STRING
     },
+    phone: {
+       type: Sequelize.STRING(12)
+    },
     password: {
         type: Sequelize.STRING,
         allowNull: false

@@ -6,7 +6,7 @@ import {Dropdown, Row, Col, Menu, Button, Input, Modal, Popover} from 'antd';
 const Search = Input.Search;
 import fetch from 'utils/fetcher';
 import './header.css';
-import {Link} from 'react-router'
+import {Link, hashHistory} from 'react-router'
 
 import LoginForm from '../LoginForm'
 import Register from '../Register'
@@ -44,6 +44,7 @@ class Header extends React.Component {
         let {delUserData} = this.context.dispatches;
         fetch.get('/api/logout', {}).then((res) => {
             delUserData();
+            hashHistory.push('/')
         }).catch((err) => {
             console.log(err);
         })
@@ -95,7 +96,9 @@ class Header extends React.Component {
                                                             <Dropdown overlay={
                                                                 <Menu>
                                                                     <Menu.Item>
+                                                                        <Link to="user">
                                                                             个人中心
+                                                                        </Link>
                                                                     </Menu.Item>
                                                                     <Menu.Item>
                                                                         <a onClick={this.logOut.bind(this)}>退出登陆</a>
