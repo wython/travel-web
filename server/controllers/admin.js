@@ -246,7 +246,7 @@ module.exports = {
         ctx.body = {
             retCode: '000000',
             data: resultList
-        }
+        };
         next();
     },
     async getHotels(ctx, next) {

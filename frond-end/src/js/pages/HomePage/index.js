@@ -7,6 +7,8 @@ import { Carousel, Button, Icon } from 'antd';
 import './homepage.css';
 import fetch from 'utils/fetcher'
 
+import RecommendTips from "layouts/RecommendTips";
+
 class HomePage extends React.Component {
     state = {
         dataSource: []
@@ -60,10 +62,9 @@ class HomePage extends React.Component {
                         <p>暂无</p>
                     </div>
                     <div className="commend-wrapper last_commend">
-                        <h1>
-                            <span className="commend-title">旅游攻略推荐</span>
-                        </h1>
-                        <p>暂无</p>
+                        <p>
+                            <RecommendTips/>
+                        </p>
                     </div>
                 </div>
 

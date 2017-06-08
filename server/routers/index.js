@@ -23,6 +23,9 @@ module.exports = {
 
     //travel
     'post /api/order/create': Controllers.order.createOrder,
+    'post /api/order/pay': Controllers.order.pay,
+    'get /api/order/getTravelOrders': Controllers.order.getTravelOrder,
+    'get /api/order/get/travel' : Controllers.order.getTravelOrderById,
 
     //admin
     'get /api/admin/createUser': Controllers.admin.createUser,

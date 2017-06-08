@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import './order.css'
-import {Steps, Form, DatePicker, message, Button} from 'antd';
+import {Alert, Steps, Form, DatePicker, message, Button} from 'antd';
 import {hashHistory} from 'react-router'
 import fetch from 'utils/fetcher';
 
@@ -38,16 +38,39 @@ class OrderPage extends React.Component{
     }
     componentWillMount() {
         let order = this.context.dispatches.getState().orderData;
-        console.log(this.context.dispatches.getState());
+
         let that = this;
-        if(!(order.name && this.context.userData.username)) {
-            hashHistory.push('/')
-            message.info('请先登录')
-        } else {
-            that.setState({
-                order
+        if(this.props.params.id) {
+            fetch.get('/api/order/get/travel', {
+                data: {
+                    id: this.props.params.id
+                }
+            }).then((res) => {
+
+                order = res.order;
+                if(!this.context.userData.username) {
+                    hashHistory.push('/')
+                    message.info('请先登录')
+                }
+                this.setState({
+                    orderId: this.props.params.id,
+                    order: res.order,
+                    index: 1
+                })
             })
+
+        } else {
+            if(!(order.name && this.context.userData.username)) {
+                hashHistory.push('/')
+                message.info('请先登录')
+            } else {
+                that.setState({
+                    order
+                })
+            }
         }
+
+
     }
     clickStep1(e) {
         fetch.post('/api/order/create', {
@@ -57,13 +80,26 @@ class OrderPage extends React.Component{
                 beginTime: this.state.order.time.format()
             }
         }).then((result) => {
-            console.log('result', result);
             if(result.retCode === '000000') {
-
+                this.setState({
+                    orderId: result.data.id,
+                    index: 1
+                })
             }
         })
-        this.setState({
-            index: 1
+
+    }
+    paySuccess(e) {
+        fetch.post('/api/order/pay', {
+            data: {
+                id: this.state.orderId
+            }
+        }).then((res) => {
+            if(res.retCode === '000000') {
+                this.setState({
+                    index: 2
+                })
+            }
         })
     }
     getComponent(index) {
@@ -99,8 +135,47 @@ class OrderPage extends React.Component{
                 )
             case 1:
                 return (
-                    <div>
+                    <div className="step-2">
                         <h1>收银台</h1>
+                        <p className="order-mess">
+                            <ul>
+                                <li><bold>订单编号:</bold> {this.state.orderId ? this.state.orderId: '数据异常'}</li>
+                                <li><bold>订单订单类型:</bold> 旅游路线</li>
+                            </ul>
+                            <div><h4>应付金额： ¥ { this.state.order.fate + 100 }</h4></div>
+                        </p>
+                        <p className="pay-p">
+                            <img className="weixin-pay" src={require('assets/WePayLogo.png')}/>
+                            <img className="weixin-commend" src={require('assets/commend.png')}/>
+                            <span className="weixin-des">亿万用户的选择</span>
+                        </p>
+                        <div className="pay-two-wrapper">
+                            <ul>
+                                <li>
+                                    <img className="pay-two" src={require('assets/two.png')}/>
+                                </li>
+                                <li>
+                                    <img className="pay-des" src={require('assets/des.png')}/>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <p style={{width: '100%',display: 'flex', justifyContent: 'center'}}>
+                            <Button onClick={this.paySuccess.bind(this)} style={{margin: 'auto'}} size="large">
+                                支付完成
+                            </Button>
+                        </p>
+                    </div>
+                )
+            case 2:
+                return (
+                    <div>
+                        <Alert message="恭喜你，支付成功"
+                               description="您已支付成功，可在订单中心查看"
+                               style={{
+                                   height: '100px'
+                               }}
+                               type="success" showIcon/>
                     </div>
                 )
         }

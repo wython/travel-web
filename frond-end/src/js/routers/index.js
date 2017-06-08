@@ -113,6 +113,14 @@ const getOrderPage = (location, cb) => {
         cb(null, require('../pages/OrderPage'))
     })
 };
+
+const getCarPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/CarPage'))
+    })
+};
+
+
 const Routers = (store) => {
     const onRootEnter = (nextState, replaceState, cb) => {
         fetch.post('/api/user/token', {}).then((res) => {
@@ -160,6 +168,8 @@ const Routers = (store) => {
                     <Route path="t/:tid" getComponent={getLineTravelPage}/>
                     <Route path="h/:hid" getComponent={getHotelMessPage}/>
                     <Route path="order" getComponent={getOrderPage}/>
+                    <Route path="o/:id" getComponent={getOrderPage} />
+                    <Route path="car" getComponent={getCarPage}/>
                 </Route>
                 <Route path="/admin" component={Admin}>
                     <Route path="login" getComponent={getAdminLoginPage}/>

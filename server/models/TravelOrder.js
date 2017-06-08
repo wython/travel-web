@@ -5,6 +5,12 @@
 const Sequelize = require('sequelize');
 
 module.exports = {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        uniqueKey: true,
+        autoIncrement: true
+    },
     travelId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -23,10 +29,6 @@ module.exports = {
     },
     user: {
         type: Sequelize.STRING(16),
-        allowNull: false,
-        references: {
-            model: 'Users',
-            key: 'username'
-        }
+        allowNull: false
     }
 };

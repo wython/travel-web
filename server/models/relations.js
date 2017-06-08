@@ -34,13 +34,15 @@ module.exports = function (models) {
         foreignKey: 'user'
     });
 
-    Users.hasMany(TravelOrder, {
+    Users.belongsToMany(Travels, {
+        through: 'TravelOrder',
         as: 'usersOrder',
         foreignKey: 'user'
     });
 
 
-    Travels.hasMany(TravelOrder, {
+    Travels.belongsToMany(Users, {
+        through: 'TravelOrder',
         as: 'travelsOrder',
         foreignKey: 'travelId'
     });

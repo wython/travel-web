@@ -1,0 +1,15 @@
+.order-center{
+    margin: 20px auto;
+    background: #ffffff;
+    width: 1000px;
+    border: 1px solid #eeeeee;
+}
+.order-center h1{
+    text-align: center;
+    padding: 20px;
+}
+.order-table{
+    width: 80%;
+    margin:auto;
+    min-height: 500px;
+}
