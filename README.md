@@ -25,6 +25,13 @@
 
 > node server
 
+数据库：
+根据server/setting.js 的配置连上数据库
+
+> node manager.js
+
+生成数据库
+
 ## 项目细节
 后端使用工作时搭建的node服务器,基于koa内核,采用koa-router
 做路由转发,sequlize做orm。简单封装model。有很大的修改空间.
