@@ -18,7 +18,9 @@ export default class Editor extends React.Component{
     render() {
         return (
             <div>
-                <div id={this.props.id} style={this.state.style} contentEditable="true">
+                <div id={this.props.id}
+                     style={this.state.style}
+                     contentEditable="true">
 
                 </div>
             </div>
@@ -34,7 +36,9 @@ export default class Editor extends React.Component{
             console.log(res);
             let result = JSON.parse(res);
             if(result.retCode === '000000') {
-                editor.command(null, 'insertHtml', '<img src="' + result.url + '" style="max-width:100%;"/>')
+                editor.command(null, 'insertHtml', '<img src="' +
+                    result.url +
+                    '" style="max-width:100%;"/>')
             }
         };
         let that = this;

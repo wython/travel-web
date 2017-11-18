@@ -1,0 +1,54 @@
+.order-page{
+    padding: 20px;
+    background: #ffffff;
+    width: 1000px;
+    margin: 20px auto;
+}
+.order-wrapper{
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+}
+.step-2 h1{
+    padding: 10px;
+}
+.step-2{
+    border:1px dashed #eeeeee;
+}
+.step-2 .order-mess{
+    background: #eeeeee;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.weixin-pay{
+    width: 100px;
+    height: 28px;
+}
+.weixin-commend{
+    height: 28px;
+}
+.pay-p{
+    padding: 10px;
+    border: 2px solid #f86300;
+    display: flex;
+    align-items: center;
+}
+.weixin-des{
+    margin-left: 10px;
+    color: #999999;
+}
+.pay-two-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pay-two{
+    width: 170px;
+    height: 170px;
+    margin-top: 20px;
+}
+.pay-des{
+    margin-top: 20px;
+    width: 170px;
+}

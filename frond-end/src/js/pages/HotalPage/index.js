@@ -7,6 +7,7 @@ import './road.css';
 import {Card, Rate} from 'antd';
 import fetch from 'utils/fetcher';
 import {Link} from 'react-router';
+import RecommendHotelBox from 'layouts/RecommendHotelBox';
 
 class HotelPage extends React.Component{
     state = {
@@ -27,7 +28,10 @@ class HotelPage extends React.Component{
             <div className="travel-page-wrapper">
                 <div className="recommend-travel-wrapper">
                     <h2>酒店推荐</h2>
-                    <div>abc</div>
+                    <div>
+                        <RecommendHotelBox/>
+                        <div style={{clear: 'both'}}></div>
+                    </div>
                 </div>
                 <div className="all-travel-wrapper">
                     <h2>所有酒店</h2>

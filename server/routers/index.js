@@ -10,6 +10,7 @@ module.exports = {
     'post /api/login' :  Controllers.user.login,
     'post /api/register': Controllers.user.register,
     'get /api/logout': Controllers.user.logOut,
+    'get /api/get/all/users': Controllers.user.getAllUsers,
 
     //tisks
     'post /api/publish': Controllers.task.publish,
@@ -27,8 +28,20 @@ module.exports = {
     'get /api/order/getTravelOrders': Controllers.order.getTravelOrder,
     'get /api/order/get/travel' : Controllers.order.getTravelOrderById,
 
+
+    //comment
+    'post /api/post/comment': Controllers.comment.postComment,
+    'get /api/get/comments': Controllers.comment.getComments,
+    'post /api/post/commentRe': Controllers.comment.postCommentRe,
     //admin
     'get /api/admin/createUser': Controllers.admin.createUser,
+
+
+    'post /api/add/recommendTravel': Controllers.admin.addRecommendTravel,
+    'get /api/get/recommendTravels': Controllers.admin.getRecommendTravels,
+    'post /api/add/recommendHotel': Controllers.admin.addRecommendHotel,
+    'get /api/get/recommendHotels': Controllers.admin.getRecommendHotels,
+
     'post /api/admin/checkUsername': Controllers.admin.checkUsername,
     'post /api/admin/login': Controllers.admin.login,
     'post /api/admin/verifyToken': Controllers.admin.verifyToken,

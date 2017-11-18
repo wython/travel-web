@@ -6,7 +6,8 @@ import React from 'react';
 import { Carousel, Button, Icon } from 'antd';
 import './homepage.css';
 import fetch from 'utils/fetcher'
-
+import RecommendBox from 'layouts/RecommendBox';
+import RecommendHotelBox from 'layouts/RecommendHotelBox';
 import RecommendTips from "layouts/RecommendTips";
 
 class HomePage extends React.Component {
@@ -53,13 +54,13 @@ class HomePage extends React.Component {
                         <h1>
                             <span className="commend-title">旅游路线推荐</span>
                         </h1>
-                        <p>暂无</p>
+                        <p><RecommendBox/></p>
                     </div>
                     <div className="commend-wrapper">
                         <h1>
                             <span className="commend-title">酒店推荐</span>
                         </h1>
-                        <p>暂无</p>
+                        <p><RecommendHotelBox/></p>
                     </div>
                     <div className="commend-wrapper last_commend">
                         <p>

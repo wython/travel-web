@@ -298,5 +298,73 @@ module.exports = {
             }
         }
         next();
+    },
+    async addRecommendTravel(ctx, next) {
+        let {id} = ctx.request.body;
+        let {RecommendTravel, Travels} = ctx.models;
+
+        let result = await RecommendTravel.create({
+            targetTravel: id
+        });
+        let travel = await Travels.findOne({
+            where: {
+                id
+            }
+        })
+        ctx.body = {
+            retCode: '000000',
+            data: travel
+        }
+        next();
+    },
+    async addRecommendHotel(ctx, next) {
+        let {id} = ctx.request.body;
+        let {RecommendHotel, Hotels} = ctx.models;
+
+        let result = await RecommendHotel.create({
+            targetHotel: id
+        });
+        let hotel = await Hotels.findOne({
+            where: {
+                id
+            }
+        })
+        ctx.body = {
+            retCode: '000000',
+            data: hotel
+        }
+        next();
+    },
+    async getRecommendTravels(ctx, next) {
+        let {RecommendTravel, Travels} = ctx.models;
+        let travelLists = [];
+        let rIdList = await RecommendTravel.findAll();
+        for(let index in rIdList) {
+            let travel = await Travels.findOne({
+                id: rIdList[index].targetTravel
+            })
+            travelLists.push(travel);
+        }
+        ctx.body = {
+            retCode: '000000',
+            data: travelLists
+        }
+        next();
+    },
+    async getRecommendHotels(ctx, next) {
+        let {RecommendHotel, Hotels} = ctx.models;
+        let HotelLists = [];
+        let rIdList = await RecommendHotel.findAll();
+        for(let index in rIdList) {
+            let travel = await Hotels.findOne({
+                id: rIdList[index].targetHotel
+            })
+            HotelLists.push(travel);
+        }
+        ctx.body = {
+            retCode: '000000',
+            data: HotelLists
+        }
+        next();
     }
 };

@@ -1,0 +1,12 @@
+.recommend-travel-wrapper-1{
+    padding :10px;
+    width: 200px;
+    border:1px solid #eeeeee;
+    float: left;
+    margin: 10px ;
+}
+
+.recommend-travel-wrapper-1 .fate{
+    color: #f86300;
+    font-size: 20px;
+}

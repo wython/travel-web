@@ -120,6 +120,11 @@ const getCarPage = (location, cb) => {
     })
 };
 
+const getHotelOrderPage = (location, cb) => {
+    require.ensure([], (require) => {
+        cb(null, require('../pages/HotelOrderPage'))
+    })
+};
 
 const Routers = (store) => {
     const onRootEnter = (nextState, replaceState, cb) => {
@@ -169,6 +174,8 @@ const Routers = (store) => {
                     <Route path="h/:hid" getComponent={getHotelMessPage}/>
                     <Route path="order" getComponent={getOrderPage}/>
                     <Route path="o/:id" getComponent={getOrderPage} />
+                    <Route path="hotelOrder" getComponent={getHotelOrderPage}/>
+                    <Route path="ho/:id" getComponent={getHotelOrderPage}/>
                     <Route path="car" getComponent={getCarPage}/>
                 </Route>
                 <Route path="/admin" component={Admin}>

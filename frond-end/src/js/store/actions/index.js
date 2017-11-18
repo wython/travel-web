@@ -7,6 +7,14 @@ export const DET_USER_DATA = 'DEL_USER_DATA';
 export const SET_ADMIN_USER_DATA = 'SET_ADMIN_USER_DATA';
 export const DET_ADMIN_USER_DATA = 'DEL_ADMIN_USER_DATA';
 export const SET_TRAVEL_ORDER = 'SET_TRAVEL_ORDER';
+export const SET_HOTEL_ORDER = 'SET_HOTEL_ORDER';
+
+export function actionSetHotelOrder(data) {
+    return {
+        type: SET_HOTEL_ORDER,
+        data
+    }
+}
 
 export function actionSetTravelOrder(data) {
     return {

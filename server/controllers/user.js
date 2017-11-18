@@ -117,5 +117,16 @@ module.exports = {
     },
     good (ctx) {
         ctx.body = 'good';
+    },
+    async getAllUsers(ctx, next) {
+        let {Users, Admin} = ctx.models;
+        let userList = await Users.findAll();
+        let adminList = await Admin.findAll();
+
+        ctx.body = {
+            retCode: '000000',
+            users: userList,
+            admins: adminList
+        }
     }
 };

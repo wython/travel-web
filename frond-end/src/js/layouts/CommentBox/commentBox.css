@@ -1,0 +1,22 @@
+.comment-item{
+    border-bottom: 1px solid #cccccc;
+    padding: 20px 0;
+}
+.face-img{
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    margin-right: 20px;
+}
+.comment-user-info{
+    display: flex;
+    align-items: center;
+}
+.comment-content{
+    padding: 20px 40px ;
+    font-size: 14px;
+}
+.reComment-box{
+    border-left: 2px solid #cccccc;
+    padding: 20px;
+}

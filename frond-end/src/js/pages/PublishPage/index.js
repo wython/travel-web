@@ -5,7 +5,7 @@ import React from 'react';
 import {hashHistory} from 'react-router';
 import WangEditor from 'components/WangEditor';
 import './publishPage.css';
-import {Input, Button} from 'antd';
+import {Input, Button, message} from 'antd';
 import fetch from 'utils/fetcher';
 
 class PublishPage extends React.Component{
@@ -34,7 +34,8 @@ class PublishPage extends React.Component{
             data: this.state.formData
         }).then((res) => {
             if(res.retCode === '000000') {
-                alert('success');
+                message.success('发布成功');
+                hashHistory.push('tips')
             }
         })
     };

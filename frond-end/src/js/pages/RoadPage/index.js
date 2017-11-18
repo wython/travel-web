@@ -7,6 +7,8 @@ import './road.css';
 import {Card} from 'antd';
 import fetch from 'utils/fetcher';
 import {Link} from 'react-router';
+import RecommendBox from 'layouts/RecommendBox';
+
 class RoadPage extends React.Component{
     state = {
         travelList: []
@@ -27,7 +29,10 @@ class RoadPage extends React.Component{
             <div className="travel-page-wrapper">
                 <div className="recommend-travel-wrapper">
                     <h2>旅游推荐</h2>
-                    <div>abc</div>
+                    <div>
+                        <RecommendBox/>
+                        <div style={{clear: 'both'}}></div>
+                    </div>
                 </div>
                 <div className="all-travel-wrapper">
                     <h2>所有旅游路线</h2>

@@ -13,7 +13,7 @@ import fetch from 'utils/fetcher';
 class LineTravelPage extends React.Component{
     state = {
         line: ''
-    }
+    };
     componentWillMount () {
         let that = this;
         fetch.get('/api/get/line', {
@@ -22,7 +22,6 @@ class LineTravelPage extends React.Component{
             }
         }).then((res) => {
             if(res.retCode === '000000') {
-                console.log(res.data);
                 that.setState({
                     line: res.data
                 })
