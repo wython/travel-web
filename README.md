@@ -1,6 +1,8 @@
 # travel-web
 毕业设计的前台页面，项目做了前后端分离，需要后台提供json数据
-,旅游旅游网站，基于webpack,react,react-router,redux
+,旅游旅游网站，基于webpack,react,react-router,redux.
+
+包含前端页面和/admin路由的后端页面
 
 ## 启动
 运行:npm install安装依赖包
